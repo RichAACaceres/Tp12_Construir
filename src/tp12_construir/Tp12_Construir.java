@@ -16,21 +16,31 @@ public class Tp12_Construir {
             //Metodo para cargar driver
             cargarDrivers();
             //Conectar a la bd
-            String url="jdbc:mariadb://localhost:3308/construirsa";
+            String url="jdbc:mariadb://localhost:3306/construirsa";
             String usuario="root";
             String contraseña="";
+            
             Connection con=DriverManager.getConnection(url,usuario,contraseña);
             System.out.println("Conectado a la base de datos");
+            
+            
            //Metodo para agregar 3 empleados
             agregarEmpleado(con);
             System.out.println("---------------------------------");
+            
+            
           //Metodo para agregar 2 herramientas
             agregarHerramientas(con);
+            
+            
             //Metodo para listar herramientas con estock mayor a 10
              listarherramientas(con);
                System.out.println("-------------------------------------");
+               
+               
             //Metodo para dar de baja a un empleado
             darDeBaja(con);
+            
         } catch (ClassNotFoundException ex) {
             JOptionPane.showMessageDialog(null,"Error a cargar el driver");
             System.out.println(ex.getMessage());
@@ -49,20 +59,20 @@ public class Tp12_Construir {
   public static void agregarEmpleado(Connection con) throws SQLException{
      //Empleado 1
       String emp1="INSERT INTO empleado( dni, apellido, nombre, acceso, estado) "
-              + "VALUES (23542345,'Sosa','Rogelio',4,1)";
+              + "VALUES (1658258,'torres','Rogelio',4,1)";
       PreparedStatement ps=con.prepareStatement(emp1);
       ps.executeUpdate();
       
       //Empleado 2
       String emp2="INSERT INTO empleado( dni, apellido, nombre, acceso, estado) "
-              + "VALUES (23542345,'Sosa','Rogelio',4,1)";
+              + "VALUES (1223,'Roza','Roberto',4,1)";
       PreparedStatement ps2=con.prepareStatement(emp2);
-     ps.executeUpdate();
+     ps2.executeUpdate();
      //Empleado 3
      String emp3="INSERT INTO empleado( dni, apellido, nombre, acceso, estado) "
-              + "VALUES (23542345,'Sosa','Rogelio',4,1)";
-      PreparedStatement ps3=con.prepareStatement(emp2);
-     int verificar=ps.executeUpdate();
+              + "VALUES (345,'Merced','Rogelio',4,1)";
+      PreparedStatement ps3=con.prepareStatement(emp3);
+     int verificar=ps3.executeUpdate();
      if(verificar>0){
          System.out.println("Empleados agregados");
      }
